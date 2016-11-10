@@ -1,90 +1,57 @@
-<<<<<<< HEAD:Cook It/UploadForm.html
 <!DOCTYPE html>
 <html>
 <head>
     <title>UploadForm</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/CookIt/Cook%20It/css/Styles.css" >
+    <link rel="stylesheet" type="text/css" href="/CookItWeb/Cook%20It/css/Styles.css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="uploadContainer">
         <div class="row">
-            <div class="col-md-5">
+            
+            <div class="col-md-5" align="center">
                 <form id="upload-image-form" action="" method="post" enctype="multipart/form-data">
                     <div id="image-preview-div" style="display: none">
                         <label for="exampleInputFile">Selected image:</label>
                         <br>
                         <img id="preview-img" src="noimage">
                     </div>
+                    <br>
                     <div class="form-group">
                         <input type="file" name="file" id="file" required>
                     </div>
-                    <button class="btn btn-primary" id="upload-button" type="submit" disabled>Upload image</button>
+                    <!--<button class="btn btn-primary" id="upload-button" type="submit" disabled>Upload image</button>-->
                 </form>    
             </div>
-            <div class="col-md-7">
-                
+            
+            <div class="col-md-7" align="justify">
+                <div id="Recipe_Uploadform">
+                    <fieldset>
+                        <legend>Fill the form</legend>
+                            <div>
+                                <div style="color:red" id="hamburguesa">*Select eating time</div>
+                                <div id="mealType">
+                                    <select id="mealType_List">
+                                        <option value="" disabled selected>Select your option</option>
+                                        <option value="0">Breakfast</option>
+                                        <option value="1">Meal</option>
+                                        <option value="2">Dinner</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </fieldset>
+                </div>
             </div>
+            
         </div>
     </div>
     
-    <script src="/data/upload-image.js"></script>
+    <script src="/CookItWeb/Cook%20It/data/upload-image.js"></script>
 </body>
 
-    <script type="text/javascript">
-        //jquery
-        $(document).ready(function(){
-           
-        
-        });
-    </script>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <title>UploadForm</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/CookIt/Cook%20It/css/Styles.css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <form id="upload-image-form" action="" method="post" enctype="multipart/form-data">
-                    <div id="image-preview-div" style="display: none">
-                        <label for="exampleInputFile">Selected image:</label>
-                        <br>
-                        <img id="preview-img" src="noimage">
-                    </div>
-                    <div class="form-group">
-                        <input type="file" name="file" id="file" required>
-                    </div>
-                    <button class="btn btn-primary" id="upload-button" type="submit" disabled>Upload image</button>
-                </form>    
-            </div>
-            <div class="col-md-7">
-                
-            </div>
-        </div>
-    </div>
-    
-    <script src="/data/upload-image.js"></script>
-</body>
-
-    <script type="text/javascript">
-        //jquery
-        $(document).ready(function(){
-           
-        
-        });
-    </script>
->>>>>>> parent of ca116fe... Width changes:Cook It/htmlFiles/UploadForm.html
 </html>

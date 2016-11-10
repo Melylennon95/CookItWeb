@@ -1,12 +1,12 @@
-<<<<<<< HEAD:Cook It/Home.html
 <!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/CookIt/Cook%20It/css/Styles.css">
+    <link rel="stylesheet" type="text/css" href="/CookItWeb/Cook%20It/css/Styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type = "text/javascript" src="jqueryFiles/scripts.js"></script>
 </head>
@@ -22,26 +22,16 @@
         <!--<a class="navbar-brand" href="#">Navbar</a> -->
         <ul class="nav navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" id="homeTab">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Featured </a>
+                <a class="nav-link" href="#" id="featuredTab">Featured </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About us </a>
+                <a class="nav-link" href="#" id="aboutTab">About us </a>
             </li>
-            <!--
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-                <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Upload Recipe</a>
-                    <a class="dropdown-item" href="#">Delete Recipe</a>
-                </div>
-            </li>
-            -->
         </ul>
-        <form class="form-inline float-xs-right" >
+        <form class="form-inline float-xs-right">
             <input class="form-control" type="text" placeholder="Recipe Search">
             <button class="btn btn-outline-success" type="submit">Filter</button>
         </form>
@@ -63,6 +53,7 @@
     </nav>
     
 <body>
+    
     <div id="myModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -84,7 +75,7 @@
     </div>
     
     
-    <div class="container-fluid">
+    <div class="container-fluid" id="homeContainer">
         <div class="row">
             <div class="col-md-8">
                 <form>
@@ -113,98 +104,43 @@
         </div>
     </div>
 
-    
-</body>
-    
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted">Footer.</span>
-        </div>
-    </footer>
-
-    <script type="text/javascript">
-        //jquery
-        $(document).ready(function(){
-           
-        
-        });
-    </script>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/CookIt/Cook%20It/css/Styles.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-    
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-3">Fluid jumbotron banner</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        </div>
-    </div>
-    
-    <nav class="navbar navbar-light bg-faded">
-        <!--<a class="navbar-brand" href="#">Navbar</a> -->
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Featured </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About us </a>
-            </li>
-            <!--
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-                <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Upload Recipe</a>
-                    <a class="dropdown-item" href="#">Delete Recipe</a>
-                </div>
-            </li>
-            -->
-        </ul>
-        <form class="form-inline float-xs-right">
-            <input class="form-control" type="text" placeholder="Recipe Search">
-            <button class="btn btn-outline-success" type="submit">Filter</button>
-        </form>
-    </nav>
-    
-<body>
-    
-    <div class="container">
+    <div class="container-fluid" id="aboutContainer" style="display: none">
         <div class="row">
-            <div class="col-md-8">
-                <form>
-                    <fieldset>
-                        <legend>Make your order</legend>
-                        <p>
-                            <span style="color:red">*Select your Burger type</span><br/>
-                                <input type="radio" name="BurgerT" value="1" />Hamburger</p>
-                                <input type="radio" name="BurgerT" value="2" />Cheeseburger</p>
-                                <input type="radio" name="BurgerT" value="3" />Baconburger</p>
-                                <input type="radio" name="BurgerT" value="4" />Bacon Cheeseburger</p>
-                        </p>
-                        <p>
-                            <span style="color:red">*Select your Bread type</span><br/>
-                                <select id="drop1">
-                                    <option value="0">Open it...</option>
-                                    <option value="1">Wholemeal Bread</option>
-                                    <option value="2">White Bread</option>
-                                    <option value="3">Rye Bread</option>
-                                </select>
-                        </p>
-                    </fieldset>
-                </form>
+            
+            <div class="col-md-6 bd-content w3-red">
+                    <h1 class="bd-title" id="content">
+                        <a class="anchorjs-link " href="#content" aria-label="Anchor link for: content" data-anchorjs-icon="" style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>History
+                    </h1>
+                    <p>
+                        Originally created by a designer and a developer at Twitter, Bootstrap has become one of the most popular front-end frameworks and open source projects in the world.
+                    </p>
+
+                    <p>
+                        Bootstrap was created at Twitter in mid-2010 by <a href="https://twitter.com/mdo">@mdo</a> and <a href="https://twitter.com/fat">@fat</a>. Prior to being an open-sourced framework, Bootstrap was known as <em>Twitter Blueprint</em>. A few months into development, Twitter held its <a href="https://blog.twitter.com/2010/hack-week">first Hack Week</a> and the project exploded as developers of all skill levels jumped in without any external guidance. It served as the style guide for internal tools development at the company for over a year before its public release, and continues to do so today.
+                    </p>
+
+                    <p>
+                        Originally <a href="https://blog.twitter.com/2011/bootstrap-twitter">released</a> on <a href="https://twitter.com/mdo/statuses/104620039650557952"><time datetime="2011-08-19 11:25">Friday, August 19, 2011</time></a>, we’ve since had over <a href="https://github.com/twbs/bootstrap/releases">twenty releases</a>, including two major rewrites with v2 and v3. With Bootstrap 2, we added responsive functionality to the entire framework as an optional stylesheet. Building on that with Bootstrap 3, we rewrote the library once more to make it responsive by default with a mobile first approach.
+                    </p>
             </div>
-            <div class="col-md-4" align="center">Announces feed</div>
+            
+            <div class="col-md-6 bd-content w3-yellow">   
+                <h1 class="bd-title" id="content">
+                        <a class="anchorjs-link " href="#content" aria-label="Anchor link for: content" data-anchorjs-icon="" style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>History
+                    </h1>
+                    <p>
+                        Originally created by a designer and a developer at Twitter, Bootstrap has become one of the most popular front-end frameworks and open source projects in the world.
+                    </p>
+
+                    <p>
+                        Bootstrap was created at Twitter in mid-2010 by <a href="https://twitter.com/mdo">@mdo</a> and <a href="https://twitter.com/fat">@fat</a>. Prior to being an open-sourced framework, Bootstrap was known as <em>Twitter Blueprint</em>. A few months into development, Twitter held its <a href="https://blog.twitter.com/2010/hack-week">first Hack Week</a> and the project exploded as developers of all skill levels jumped in without any external guidance. It served as the style guide for internal tools development at the company for over a year before its public release, and continues to do so today.
+                    </p>
+
+                    <p>
+                        Originally <a href="https://blog.twitter.com/2011/bootstrap-twitter">released</a> on <a href="https://twitter.com/mdo/statuses/104620039650557952"><time datetime="2011-08-19 11:25">Friday, August 19, 2011</time></a>, we’ve since had over <a href="https://github.com/twbs/bootstrap/releases">twenty releases</a>, including two major rewrites with v2 and v3. With Bootstrap 2, we added responsive functionality to the entire framework as an optional stylesheet. Building on that with Bootstrap 3, we rewrote the library once more to make it responsive by default with a mobile first approach.
+                    </p>
+            </div>
+            
         </div>
     </div>
 
@@ -212,17 +148,9 @@
 </body>
     
     <footer class="footer">
-        <div class="container">
+        <div class="container-fluid">
             <span class="text-muted">Footer.</span>
         </div>
     </footer>
 
-    <script type="text/javascript">
-        //jquery
-        $(document).ready(function(){
-           
-        
-        });
-    </script>
->>>>>>> parent of ca116fe... Width changes:Cook It/htmlFiles/Home.html
 </html>
