@@ -9,34 +9,63 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type = "text/javascript" src="jqueryFiles/scripts.js"></script>
 </head>
-
+    
+    <nav class="navbar navbar-dark bg-inverse" id = "Menubar">
+        <a class="navbar-brand" href="Home.html">CookIt</a>
+        <!--<a class="navbar-brand" href="#">Navbar</a> -->
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="Home.html" id="homeTab">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="featuredTab">Recipes </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="aboutTab">About us </a>
+            </li>
+        
+        <!--<form class="form-inline float-xs-right">
+            <input class="form-control" type="text" placeholder="Recipe Search">
+            <button class="btn btn-outline-success" type="submit">Filter</button>
+        </form>-->
+        </ul>
+    </nav>
 <body>
+    <hr>
+    <h1>Registration</h1>
     <div>
       <hr>
-        <p>
-            First Name<br/>
-            <input id="firstName" class="formElement" type="text" />
-        </p>
-        <p>
-            Last Name<br/>
-            <input id="lastName" class="formElement" type="text" />
-        </p> 
-        <p>
-            Email<br/>
-            <input id="email" class="formElement" type="text" />
-        </p> 
-        <p>
-            Username<br/>
-            <input id="username" class="formElement" type="text" />
-        </p>
-        <p>
-            Password<br/>
-            <input id="userPassword" class="formElement" type="password" />
-        </p>   
-        <p>
-            <input type="button" id="registerButton" class = "iden1" value="Register"/>
-            <input type="button" id="cancelButton" class = "iden2" value="Cancel"/>
-        </p>
+        <div>
+            <p>
+                First Name<br/>
+                <input id="firstName" class="formElement" type="text" />
+                <label id = "fillname" style="display : none">You need to input a name</label>
+            </p>
+            <p>
+                Last Name<br/>
+                <input id="lastName" class="formElement" type="text" />
+                <label id = "fillLaname" style="display : none">You need to input a last name</label>
+            </p> 
+            <p>
+                Email<br/>
+                <input id="email" class="formElement" type="text" />
+                <label id = "fillemail" style="display : none">You need to input a email</label>
+            </p> 
+            <p>
+                Username<br/>
+                <input id="username" class="formElement" type="text" />
+                <label id = "fillusername" style="display : none">You need to input a username</label>
+            </p>
+            <p>
+                Password<br/>
+                <input id="userPassword" class="formElement" type="password" />
+                <label id = "fillpassword" style="display : none">You need to input a password</label>
+            </p>
+            <p>
+                <input type="button" id="registerButton" class = "iden1" value="Register"/>
+                <input type="button" id="cancelButton" class = "iden2" value="Cancel"/>
+            </p>
+        </div>
         <hr>
     </div>
     

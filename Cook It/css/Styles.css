@@ -1,6 +1,9 @@
 div.jumbotron.jumbotron-fluid {
     margin-bottom: 0;
+    margin-top: 0;
+    background-image: url("berries.jpg");
 }
+
 
 /* The Modal (background) */
 .modal {
@@ -81,4 +84,15 @@ div.jumbotron.jumbotron-fluid {
 .iden1Small:hover{
   background-color: #ebebe0;
     color: white;
+}
+
+.div {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.redtext{
+    color: crimson;
 }

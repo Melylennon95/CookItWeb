@@ -53,35 +53,65 @@ $(document).ready(function() {
     
     //register new user
     $("#registerButton").on("click", function(){
-                var jsonObject = {
-                    "action" : "REGISTRATION",
-                    "username" : $("#username").val(),
-                    "userPassword" : $("#userPassword").val(),
-                    "email" : $("#email").val(),
-                    "userFirstName" : $("#firstName").val(),
-                    "userLastName" : $("#lastName").val()
-                };
-
-                $.ajax({
-                    type: "POST",
-                    url: "data/applicationLayer.php",
-                    data : jsonObject,
-                    dataType : "json",
-                    contentType : "application/x-www-form-urlencoded",
-                    success: function(jsonData) {
-                        alert(jsonData.message); 
-                        window.location.replace("Home.html");
-                       
-                    },
-                    error: function(errorMsg){
-                        alert(errorMsg.responseText);
-                    }
-                });
-           });
+        $("#fillname").css('display', 'none');
+        $("#fillLaname").css('display', 'none');
+        $("#fillemail").css('display', 'none');
+        $("#fillusername").css('display', 'none');
+        $("#fillpassword").css('display', 'none');
+        
+        if($.trim($("#firstName").val()) == ""){
+            $("#fillname").css('display', 'inline-block');
+            $("#fillname").css('color', 'crimson');
+        }
+        if($.trim($("#lastName").val()) == ""){
+            $("#fillLaname").css('display', 'inline-block');
+            $("#fillLaname").css('color', 'crimson');
+        }
+        if($.trim($("#email").val()) == ""){
+            $("#fillemail").css('display', 'inline-block');
+            $("#fillemail").css('color', 'crimson');
+        }
+        if($.trim($("#username").val()) == ""){
+            $("#fillusername").css('display', 'inline-block');
+            $("#fillusername").css('color', 'crimson');
+        }
+        if($.trim($("#userPassword").val()) == ""){
+            $("#fillpassword").css('display', 'inline-block');
+            $("#fillpassword").css('color', 'crimson');
+        }
+        
+        if(($.trim($("#firstName").val()) != "") && ($.trim($("#lastName").val()) != "") && ($.trim($("#email").val()) != "")&& ($.trim($("#username").val()) != "") && ($.trim($("#userPassword").val()) != "")){
             
-           $("#cancelButton").on("click", function(){
-                window.location.replace("Home.html");
-           });
+            var jsonObject = {
+                "action" : "REGISTRATION",
+                "username" : $("#username").val(),
+                "userPassword" : $("#userPassword").val(),
+                "email" : $("#email").val(),
+                "userFirstName" : $("#firstName").val(),
+                "userLastName" : $("#lastName").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "data/applicationLayer.php",
+                data : jsonObject,
+                dataType : "json",
+                contentType : "application/x-www-form-urlencoded",
+                success: function(jsonData) {
+                    alert(jsonData.message); 
+                    window.location.replace("Home.html");
+
+                },
+                error: function(errorMsg){
+                    alert(errorMsg.responseText);
+                }
+            }); 
+        }
+    });
+            
+       $("#cancelButton").on("click", function(){
+            window.location.replace("Home.html");
+       });
     
     //login
         $("#Loginbtn").click(function(){
