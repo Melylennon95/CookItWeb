@@ -26,6 +26,9 @@ switch($action){
         
     case "LOGOUT" : logout();
                     break;
+        
+    case "SAVE-RECIPE" : saveRecipe();
+                    break;
 }
 function checkStart(){
   
@@ -226,5 +229,25 @@ function logout(){
 		die($result["status"]);
 	}
 }
+
+function saveRecipe(){
+    
+    $name = $_POST['name'];
+    $ingredients = $_POST['ingre'];
+    $steps = $_POST['steps'];
+    $timeH = $_POST['timeH'];
+    $imageName = "VACIO";
+    
+    $result = attemptSaveRecipe($name, $ingredients, $steps, $timeH, $imageName);
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode(array("message" => "New record comment created successfully"));
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}	
+}
+
 
 ?>

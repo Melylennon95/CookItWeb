@@ -5,6 +5,8 @@ $(document).ready(function() {
         $("#aboutContainer").hide();
         $("#homeContainer").show();
     });*/
+    
+    
     $("#featuredTab").on('click', function(){
         $("#homeContainer").hide();
         $("#aboutContainer").hide();
@@ -15,6 +17,7 @@ $(document).ready(function() {
         $("#featuredContainer").hide();
         $("#aboutContainer").show();
     });
+    
     
     var checked = false;
     
@@ -108,7 +111,8 @@ $(document).ready(function() {
             }); 
         }
     });
-            
+          
+    
        $("#cancelButton").on("click", function(){
             window.location.replace("Home.html");
        });
@@ -182,6 +186,67 @@ $(document).ready(function() {
                 }
             })
         });
-   
     
+    //-------------------------------------------------------------------
+    //--------------Upload Form-----------------------------------------
+    //-------------------------------------------------------------------
+    
+    //upload new recipe
+    $("#UploadBtn").on("click", function(){
+        $("#Uploadfillname").css('display', 'none');
+        $("#UploadfillIngredients").css('display', 'none');
+        $("#UploadfillSteps").css('display', 'none');
+        $("#Uploadfilltime").css('display', 'none');
+        
+        if($.trim($("#recipeName").val()) == ""){
+            $("#Uploadfillname").css('display', 'inline-block');
+            $("#Uploadfillname").css('color', 'crimson');
+        }
+        if($.trim($("#ingredientesArea").val()) == ""){
+            $("#UploadfillIngredients").css('display', 'inline-block');
+            $("#UploadfillIngredients").css('color', 'crimson');
+        }
+        if($.trim($("#stepsArea").val()) == ""){
+            $("#UploadfillSteps").css('display', 'inline-block');
+            $("#UploadfillSteps").css('color', 'crimson');
+        }
+        if($.trim($("#tiempo").val()) == ""){
+            $("#Uploadfilltime").css('display', 'inline-block');
+            $("#Uploadfilltime").css('color', 'crimson');
+        }
+        
+        if(($.trim($("#recipeName").val()) != "") && ($.trim($("#ingredientesArea").val()) != "") && ($.trim($("#stepsArea").val()) != "")&& ($.trim($("#tiempo").val()) != "")){
+            
+            var jsonRecipe = {
+                "action" : "SAVE-RECIPE",
+                "name" : $("#recipeName").val(),
+                "ingre" : $("#ingredientesArea").val(),
+                "steps" : $("#stepsArea").val(),
+                "timeH" : $("#tiempo").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "data/applicationLayer.php",
+                data : jsonRecipe,
+                dataType : "json",
+                contentType : "application/x-www-form-urlencoded",
+                success: function(jsonData) {
+                    alert(jsonData.message); 
+                    window.location.replace("Userprofile.html");
+
+                },
+                error: function(errorMsg){
+                    alert(errorMsg.responseText);
+                }
+            }); 
+        }
+    });
+          
+    
+    
+     //cancel
+         $("#loadCancelBtn").on("click", function(){
+            window.location.replace("Userprofile.html");
+      });
 });

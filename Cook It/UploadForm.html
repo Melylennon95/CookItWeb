@@ -7,8 +7,21 @@
     <link rel="stylesheet" type="text/css" href="/CookItWeb/Cook%20It/css/Styles.css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="jqueryFiles/scripts.js"></script>
 </head>
 
+    <nav class="navbar navbar-dark bg-inverse" id = "Menubar">
+        <a class="navbar-brand" href="Home.html">CookIt</a>
+        <!--<a class="navbar-brand" href="#">Navbar</a> -->
+        <ul class="nav navbar-nav">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="Home.html" id="homeTab">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+        </ul>
+    </nav>
+    
 <body>
     <div class="container-fluid" id="uploadContainer">
         <div class="row">
@@ -18,7 +31,7 @@
                     <div id="image-preview-div" style="display: none">
                         <label for="exampleInputFile">Selected image:</label>
                         <br>
-                        <img id="preview-img" src="noimage">
+                        <!--<img id="preview-img" src="noimage">-->
                     </div>
                     <br>
                     <div class="form-group">
@@ -35,24 +48,32 @@
                       <div class="form-group">
                         <label>Recipe Name</label>
                         <input type="email" class="form-control" id="recipeName" placeholder="Enter recipe name">
+                        <label id = "Uploadfillname" style="display : none">You need to input a name for the recipe</label>
                       </div>
                       
                       <div class="form-group">
                         <label>Ingredients</label>
                         <textarea class="form-control" id="ingredientesArea" placeholder="Please enter your ingredients orderly" rows="5"></textarea>
+                        <label id = "UploadfillIngredients" style="display : none">You need to input the ingredients</label>
                       </div>
                         
                       <div class="form-group">
                         <label>Steps</label>
                         <textarea class="form-control" id="stepsArea" placeholder="Please enter your steps orderly" rows="5"></textarea>
+                        <label id = "UploadfillSteps" style="display : none">You need to input the steps for the recipe</label>
                       </div> 
                         
                       <div class="form-group">
                         <label>Time: </label>
                         <input type="number" step=0.01 id="tiempo" placeholder="Enter cooking time"/><label> Hours</label>
+                        <label id = "Uploadfilltime" style="display : none">You need to input the time for the recipe</label>
                       </div> 
                         
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <input type="button" id="UploadBtn" class = "iden1" value="Upload"/>
+                      <input type="button" id="loadCancelBtn" class = "iden2" value="Cancel"/>
+                     <!--<button type="submit" class="btn btn-primary">Submit</button>
+                     <button type="submit" id="loadCancelBtn" class="btn btn-primary">Cancel</button>-->
+                        
                     </form>
                 </div>
             </div>
@@ -60,7 +81,7 @@
         </div>
     </div>
     
-    <script src="/CookItWeb/Cook%20It/data/upload-image.js"></script>
+    <!--<script src="/CookItWeb/Cook%20It/data/upload-image.js"></script>-->
 </body>
 
 </html>

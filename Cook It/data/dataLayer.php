@@ -317,4 +317,32 @@ function attemptLogout(){
     return array("status" => "SUCCESS");
 
     }
+
+function attemptSaveRecipe($name, $ingredients, $steps, $timeH, $imageName){
+        
+         session_start();
+        
+         $userName = $_SESSION['username'];
+         $conn = connectionToDataBase();
+        
+         if ($conn != null){
+             
+			$sql = "INSERT INTO userRecipe(username, name, ingredients, steps, timeH, imageName) VALUES ('$userName', '$name' , '$ingredients' , '$steps' , '$timeH' , '$imageName')";
+             
+                 if (mysqli_query($conn, $sql)) 
+                {
+                    $conn -> close();
+			         return array("status" => "SUCCESS");
+                     
+                } 
+                else 
+                {
+                    $conn -> close();
+			         return array("status" => "could not save");
+                }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+    }
 ?>
