@@ -1,18 +1,18 @@
 $(document).ready(function() {
     
-    $("#homeTab").on('click', function(){
-        //$("#featuredContainer").hide();
+    /*$("#homeTab").on('click', function(){
+        $("#featuredContainer").hide();
         $("#aboutContainer").hide();
         $("#homeContainer").show();
+    });*/
+    $("#featuredTab").on('click', function(){
+        $("#homeContainer").hide();
+        $("#aboutContainer").hide();
+        $("#featuredContainer").show();
     });
-//    $("#featuredTab").on('click', function(){
-//        $("#homeContainer").hide();
-//        $("#aboutContainer").hide();
-//        $("#featuredContainer").show();
-//    });
     $("#aboutTab").on('click', function(){
         $("#homeContainer").hide();
-        //$("#featuredContainer").hide();
+        $("#featuredContainer").hide();
         $("#aboutContainer").show();
     });
     

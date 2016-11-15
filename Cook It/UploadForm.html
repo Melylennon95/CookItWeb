@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/CookItWeb/Cook%20It/css/Styles.css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
@@ -31,20 +30,30 @@
             
             <div class="col-md-7" align="justify">
                 <div id="Recipe_Uploadform">
-                    <fieldset>
-                        <legend>Fill the form</legend>
-                            <div>
-                                <div style="color:red" id="hamburguesa">*Select eating time</div>
-                                <div id="mealType">
-                                    <select id="mealType_List">
-                                        <option value="" disabled selected>Select your option</option>
-                                        <option value="0">Breakfast</option>
-                                        <option value="1">Meal</option>
-                                        <option value="2">Dinner</option>
-                                    </select>
-                                </div>
-                            </div>
-                    </fieldset>
+                    <form>
+                    <br>
+                      <div class="form-group">
+                        <label>Recipe Name</label>
+                        <input type="email" class="form-control" id="recipeName" placeholder="Enter recipe name">
+                      </div>
+                      
+                      <div class="form-group">
+                        <label>Ingredients</label>
+                        <textarea class="form-control" id="ingredientesArea" placeholder="Please enter your ingredients orderly" rows="5"></textarea>
+                      </div>
+                        
+                      <div class="form-group">
+                        <label>Steps</label>
+                        <textarea class="form-control" id="stepsArea" placeholder="Please enter your steps orderly" rows="5"></textarea>
+                      </div> 
+                        
+                      <div class="form-group">
+                        <label>Time: </label>
+                        <input type="number" step=0.01 id="tiempo" placeholder="Enter cooking time"/><label> Hours</label>
+                      </div> 
+                        
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
             
