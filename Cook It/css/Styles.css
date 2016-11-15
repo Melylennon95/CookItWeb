@@ -1,9 +1,8 @@
 div.jumbotron.jumbotron-fluid {
     margin-bottom: 0;
     margin-top: 0;
-    background-image: url("berries.jpg");
+    /*background-image: url("berries.jpg");*/
 }
-
 
 /* The Modal (background) */
 .modal {
