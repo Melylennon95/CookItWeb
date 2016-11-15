@@ -18,6 +18,21 @@ $(document).ready(function() {
         $("#aboutContainer").show();
     });
     
+    $("#btn_info").on('click', function(){
+        $("#dislay_uploads").hide();
+        $("#display_favorites").hide();
+        $("#display_profile").show();
+    });
+    $("#btn_fav").on('click', function(){
+        $("#display_uploads").hide();
+        $("#display_profile").hide();
+        $("#display_favorites").show();
+    });
+    $("#btn_up").on('click', function(){
+        $("#display_profile").hide();
+        $("#display_favorites").hide();
+        $("#display_uploads").show();
+    });
     
     var checked = false;
     

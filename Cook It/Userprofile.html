@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RegistrationForm</title>
+    <title>UserProfile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/CookIt/Cook%20It/css/Styles.css" >
@@ -16,9 +16,11 @@
         <ul class="nav navbar-nav">
             
 
+<!-- 
             <li class="nav-item">
                 <a class="nav-link" href="Home.html" id="homeTab">Home <span class="sr-only">(current)</span></a>
             </li>
+-->
 
 <!--
             <li class="nav-item">
@@ -28,7 +30,7 @@
                 <a class="nav-link" href="#" id="aboutTab">About us </a>
             </li>
 -->
-            <li class="nav-item">
+            <li class="nav-item" style="float:right">
                 <a class="nav-link" href="UploadForm.html" id="uploadTap">Upload recipe <span class="sr-only"></a>
             </li>
         
@@ -38,16 +40,148 @@
         </form>-->
         </ul>
     </nav>
+    
+    <div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
+        <div class="container">
+            <h1 class="display-3">Cook it</h1>
+            <p class="lead">Need a recipe to survive your trip? Well, you came to the right place.</p>
+        </div>
+    </div>
+    
 <body>
    
+       <div class="container-fluid" id="aboutContainer">
+        <div class="row">
+            <br>
+            <div class="col-md-3 bd-content text-xs-center">
+                    <h1 class="bd-title" id="content">
+                        <a style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Pick it
+                    </h1>
+                    <br>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary" id="btn_info">Information</button>
+                      <button type="button" class="btn btn-primary" id="btn_fav">Favorites</button>
+                      <button type="button" class="btn btn-primary" id="btn_up">Uploads</button>
+                    </div>    
+                
+            </div>
+            
+            <div class="col-md-9 bd-content">   
+                <h1 class="bd-title" id="content" style="display : none">
+                        <a style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a><!--Fill with selected option-->
+                </h1>
+                
+                <form id="display_uploads" style="display: none">
+                    <br>
+                      <div class="form-group">
+                        <label>Recipe Name</label>
+                        <br>
+                        <span id="recipename_span"></span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Recipe Ingredients</label>
+                        <br>
+                        <span id="ingredients_area"/></span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Recipe Instructions</label>
+                        <br>
+                        <span id="instructions_area"/></span>
+                      </div>
+                        
+                      <div class="form-group">
+                        <label>Time in hours</label>
+                        <br>
+                        <span id="time_span"></span>
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Photo</label>
+                        <br>
+                        <img>
+                      </div>
+                </form>
+           
+                <form id="display_profile" style="display: none">
+                    <br>
+                      <div class="form-group">
+                        <label>Name</label>
+                        <br>
+                        <span id="name_span"></span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <br>
+                        <span id="lname_area"/></span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Username</label>
+                        <br>
+                        <span id="uname_span"/></span>
+                      </div>
+                        
+                      <div class="form-group">
+                        <label>Email</label>
+                        <br>
+                        <span id="email_span"></span>
+                      </div>
+                </form>
+    
+                <form id="display_favorites" style="display: none">
+                    <br>
+                      <div class="form-group">
+                        <label>Recipe Name</label>
+                        <br>
+                        <span id="favname_span"></span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Recipe Ingredients</label>
+                        <br>
+                        <span id="favingredients_area"/></span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Recipe Instructions</label>
+                        <br>
+                        <span id="favinstructions_area"/></span>
+                      </div>
+                        
+                      <div class="form-group">
+                        <label>Time in hours</label>
+                        <br>
+                        <span id="favtime_span"></span>
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Photo</label>
+                        <br>
+                        <img>
+                      </div>
+                </form>
+                
+            </div>
+            
+        </div>
+    </div>
     
 </body>
 
-    <script type="text/javascript">
-        //jquery
-        $(document).ready(function(){
-    
-        
-        });
-    </script>
+    <footer class="footer">
+        <div class="container-fluid">
+            <br>
+                        <br>
+                        <br>
+                        <br>
+            <br>
+                        <br>
+                        <br>
+            <span class="text-muted">Footer.</span>
+        </div>
+    </footer>
+
 </html>
