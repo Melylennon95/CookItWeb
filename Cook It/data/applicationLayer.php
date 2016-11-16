@@ -29,6 +29,15 @@ switch($action){
         
     case "SAVE-RECIPE" : saveRecipe();
                     break;
+        
+    case "LOAD-RECIPE" : loadRecipe();
+                    break;
+        
+    case "USER-INFO" : loadUserInfo();
+                    break;
+    
+    case "RECIPE-DETAIL" : loadRecipeDetail();
+                    break;
 }
 function checkStart(){
   
@@ -249,5 +258,47 @@ function saveRecipe(){
 	}	
 }
 
+function loadRecipe(){
+    
+    $result = attemptLoadRecipe();
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}
+    
+}
+
+function loadUserInfo(){
+    
+    $result = attemptLoadUser();
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}
+    
+}
+
+function loadRecipeDetail(){
+    
+    $ResID = $_POST['resId'];
+    $result = attemptRecipeDetail($ResID);
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}
+    
+}
 
 ?>

@@ -345,4 +345,102 @@ function attemptSaveRecipe($name, $ingredients, $steps, $timeH, $imageName){
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
     }
+
+function attemptLoadRecipe(){
+     
+         $conn = connectionToDataBase();
+    
+         session_start();
+        
+         $userName = $_SESSION['username'];
+        
+         if ($conn != null){
+             
+            $sql = "SELECT RecipeId, name, ingredients, steps, timeH, imageName
+            FROM userRecipe
+            WHERE username = '$userName' ";
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                
+                $response = array("status" => "SUCCESS");
+                
+                while ($row = $result->fetch_assoc()){
+                    array_push($response,array( "RecipeId"=>$row["RecipeId"] ,"name"=>$row["name"], "ingredients"=>$row["ingredients"], "steps"=>$row["steps"], "timeH"=>$row["timeH"], "imageName"=>$row["imageName"]));
+                }
+                
+                
+                return $response;
+            }
+            else
+            {
+                
+                return array("status" => "could not load recipes");
+            }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+    }
+
+function attemptLoadUser(){
+     
+         $conn = connectionToDataBase();
+    
+         session_start();
+        
+         $userName = $_SESSION['username'];
+        
+         if ($conn != null){
+             
+            $sql = "SELECT fName, lName, email, username
+            FROM users
+            WHERE username = '$userName' ";
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                
+                while ($row = $result->fetch_assoc()){
+                    return array("status" => "SUCCESS","fname"=>$row["fName"],"lname"=>$row["lName"],"email"=>$row["email"],"userName"=>$row["username"]);
+                }
+                
+            }
+            else
+            {
+                
+                return array("status" => "could not load recipes");
+            }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+    }
+
+function attemptRecipeDetail($ResID){
+        
+         $conn = connectionToDataBase();
+        
+         if ($conn != null){
+            $sql = "SELECT RecipeId, name, ingredients, steps, timeH, imageName
+            FROM userRecipe
+            WHERE RecipeId = '$ResID' ";
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                
+                while ($row = $result->fetch_assoc()){
+                    return array("status" => "SUCCESS","RecipeId"=>$row["RecipeId"] ,"name"=>$row["name"], "ingredients"=>$row["ingredients"], "steps"=>$row["steps"], "timeH"=>$row["timeH"], "imageName"=>$row["imageName"]);
+                }
+                
+            }
+            else
+            {
+                
+                return array("status" => "could not load recipe detail");
+            }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+    }
 ?>
