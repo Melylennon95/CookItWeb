@@ -41,7 +41,7 @@
     <div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
         <div class="container">
             <h1 class="display-3">User recipes</h1>
-            <p class="lead">Need a recipe to survive your trip? Well, you came to the right place.</p>
+            <p class="lead"></p>
         </div>
     </div>
     
@@ -88,10 +88,10 @@
                     for (var i = 0; i < countArr-1; i++){
                         newHTMLContent = "";
                         
-                        $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br><span style="display:inline-block" type=button class="btn btn-primary" name="ResDetail"> More info </span></div><hr>');
+                        $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br><span style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +'> More info </span></div><hr>');
                         
                         
-                      $('#Contenido').css({'margin':'auto'});
+                        $('#Contenido').css({'margin':'auto'});
 
                     }
                     
@@ -115,7 +115,7 @@
             <br>
                         <br>
                         <br>
-            <span class="text-muted">Footer.</span>
+            <span class="text-muted">Need a recipe to survive your trip? Well, you came to the right place.</span>
         </div>
     </footer>
 

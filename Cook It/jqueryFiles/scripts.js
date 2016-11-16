@@ -21,18 +21,20 @@ $(document).ready(function() {
     
     
     //-------------------------------------------------------------------
-    //--------------Recipe detail-----------------------------------------
+    //--------------User Recipes-----------------------------------------
     //-------------------------------------------------------------------
     
-    $(".btn btn-primary").on("click", function(){
-            window.location.replace("RecipeDetail.html");
-       });
+    $("#Contenido").on("click",".btn.btn-primary" , function(){
+            var RecipeIdBtn = $(this).attr("id");
+            window.location.replace("RecipeDetail.html?RecipeIdBtn=" + RecipeIdBtn);
+                    
+    });
     
         
     //-------------------------------------------------------------------
     //--------------Home page-----------------------------------------
     //-------------------------------------------------------------------
-    var checked = false;
+    var checked = true;
     
      //chek start session 
      var jsonStartSession = {
@@ -66,6 +68,7 @@ $(document).ready(function() {
                  // alert(errorMessage.responseText);
                 }
             })
+        
     
     //register new user
     $("#registerButton").on("click", function(){
@@ -200,6 +203,47 @@ $(document).ready(function() {
             })
         });
     
+        var jsonLoadRes = {
+            "action" : "LOADRES-MENU"
+        };
+        
+        $.ajax({
+                url: "data/applicationLayer.php",
+                type: "POST",
+                data : jsonLoadRes,
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded",
+                success: function(jsonResponse){
+                   
+                    var countArr = 0;
+                   
+                    $.each( jsonResponse, function( i, l ){
+                        countArr ++;
+                    }); 
+                    
+                    for (var i = 0; i < countArr-1; i++){
+                        newHTMLContent = "";
+                        
+                        $("#Container").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br><input style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +' align="right" value="Details"></input></div><hr>');
+                        
+                        
+                        $('#Contenido').css({'margin':'auto'});
+
+                    }
+                    
+                },
+                error: function(errorMessage) {
+                    //alert(errorMessage.responseText);
+                    $("#Contenido").append("User has not uploaded any recipe");
+                }
+        })
+        
+         $("#Container").on("click",".btn.btn-primary" , function(){
+            var RecipeIdBtn = $(this).attr("id");
+            window.location.replace("RecipeDetail.html?RecipeIdBtn=" + RecipeIdBtn);
+                    
+        });
+    
     //-------------------------------------------------------------------
     //--------------Upload Form-----------------------------------------
     //-------------------------------------------------------------------
@@ -262,4 +306,17 @@ $(document).ready(function() {
          $("#loadCancelBtn").on("click", function(){
             window.location.replace("Userprofile.html");
       });
+    
+    
+     //-------------------------------------------------------------------
+    //--------------Upload Form-----------------------------------------
+    //-------------------------------------------------------------------
+    
+   
+     $("#loadCancelBtn").on("click", function(){
+       
+        
+      });
+    
+    
 });

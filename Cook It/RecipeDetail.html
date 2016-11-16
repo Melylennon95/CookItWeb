@@ -30,6 +30,19 @@
             <li class="nav-item" >
                 <a class="nav-link" href="UploadForm.html" id="uploadTap">Upload recipe <span class="sr-only"></a>
             </li>
+                
+            <li class="nav-item" style="float:right" >
+                <a class="nav-link" href="RegistrationForm.html" id = "Register"> Register </a>
+            </li>
+            <li class="nav-item" style="float:right">
+                <a class="nav-link" href="#" id = "Loginbtn" > Login </a>
+            </li>
+            <li class="nav-item" style="float:right">
+                <a class="nav-link" href="#" id = "Logoutbtn" style="display : none">Logout </a>
+            </li>
+            <li class="nav-item" style="float:right">
+                <a class="nav-link" href="Userprofile.html" id = "UserName" style="display : none"></a>
+            </li>
         
         <!--<form class="form-inline float-xs-right">
             <input class="form-control" type="text" placeholder="Recipe Search">
@@ -47,6 +60,27 @@
     
 <body>
    
+     <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">x</span>
+          <h3>Login</h3>
+        </div>
+        <div class="modal-body">
+             <label id=msgError class = "Error" style="display : none" >Wrong username or password</label>
+            <p>User name<br>
+                <input type="text" id = "UserNameCom"/>
+            </p>
+            <p>Password<br>
+                <input type="password" id = "PasswordCom"/>
+            </p>
+            <!--<p><input type="checkbox" id="RememberMe" name ="RememberMe"  />Remember me</p>-->
+            <span type="buttons"  class = "iden1Small" id = "LoginbtnModal" />Confirm</span>
+        </div>
+      </div>
+    </div>
+    
+
        <div class="container-fluid" id="aboutContainer">
         <div class="row" id = "Contenido">
             <br>
@@ -72,52 +106,218 @@
                       <div class="form-group">
                         <label>Ingredients: </label>
                         <br>
-                        <span id="ResIngr"/></span>
+                        <pre id="ResIngr"></pre>
                       </div>
                         
                       <div class="form-group">
                         <label>Steps:  </label>
                         <br>
-                        <span id="ResSteps"></span>
-                      </div>
+                        <pre id="ResSteps"></pre>
                 </form>
-                                      
+           
+                
+                <input type="button" id="cancelBtnRD" class = "iden2" value="Back"/>
+            </div>
+            
+            <div class="col-md-9 bd-content" id="comments"> 
+                
             </div>
             
         </div>
     </div>
     
+    <hr>
+        <div>
+            <p>Comment<br>
+            <textarea rows="4" cols="70" id = "ComentarioT">
+            </textarea>
+            </p>
+            <label id="ErrorC" style="display: none;" class = "Error">No puede estar vacio el comentario!!</label>
+            <br>
+            <input type="button" id="combtnRD" class = "iden2" value="Comment"/>
+        </div>
+    <hr>
+    <div id = "UserComments"></div>
     
 <script type="text/javascript">
-    $(document).ready(function () {
+ $(document).ready(function () { 
+        var RecipeId = window.location.search;
+        var posIgual = RecipeId.indexOf("=");
+        var iDSolo = RecipeId.substr(posIgual + 1);
+       
+        $("#cancelBtnRD").css({
+            "background-color": "#ff3333", 
+             "color":"white", 
+             "padding":"5px 11px",
+             "text-align":"center",
+             "display":"inline-block",
+             "font-size":"'Hammersmith One', sans-serif",
+             "border-radius":"7px",
+             "cursor":"pointer"
+        });
         
-       var jsonRecipeDetail = {
+        $("#cancelBtnRD").hover(function(){
+            $(this).css("background-color", "#ff6666");
+            }, function(){
+            $(this).css("background-color", "#ff3333");
+        });
+     
+         $("#combtnRD").css({"background-color": "#4CAF50", 
+             "color":"white", 
+             "padding":"5px 11px",
+             "text-align":"center",
+             "display":"inline-block",
+             "font-size":"'Hammersmith One', sans-serif",
+             "border-radius":"7px",
+             "cursor":"pointer"
+        });
+        
+        $("#combtnRD").hover(function(){
+            $(this).css("background-color", "#80ff80");
+            }, function(){
+            $(this).css("background-color", "#4CAF50");
+        });   
+     
+        $("#ResIngr").css({
+             "display":"block",
+             "font-size":"'Times New Roman'', Times, serif"
+        });
+     
+         $("#ResSteps").css({
+             "display":"block",
+             "font-size":"'Times New Roman'', Times, serif"
+        });
+     
+        var jsonRecipeDetail = {
             "action" : "RECIPE-DETAIL",
-            "resId" : "1"
-        };
-        
-        $.ajax({
-                url: "data/applicationLayer.php",
-                type: "POST",
-                data : jsonRecipeDetail,
-                dataType: "json",
-                contentType: "application/x-www-form-urlencoded",
-                success: function(jsonResponse){
-                   
-                    $("#ResName").html(jsonResponse.name);
-                    $("#ResTime").html(jsonResponse.timeH);
-                    $("#ResIngr").html(jsonResponse.ingredients);
-                    $("#ResSteps").html(jsonResponse.steps);
-                    
+            "resId" : iDSolo
+            };
 
-                    
-                },
-                error: function(errorMessage) {
-                    alert(errorMessage.responseText);
-                }
+            $.ajax({
+                    url: "data/applicationLayer.php",
+                    type: "POST",
+                    data : jsonRecipeDetail,
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function(jsonResponse){
+
+                        $("#ResName").html(jsonResponse.name);
+                        $("#ResTime").html(jsonResponse.timeH);
+                        $("#ResIngr").html(jsonResponse.ingredients);
+                        $("#ResSteps").html(jsonResponse.steps);
+
+
+
+                    },
+                    error: function(errorMessage) {
+                        alert(errorMessage.responseText);
+                    }
+            })
+            
+            //go back to user recipes
+            $("#cancelBtnRD").on("click", function(){
+                window.location.replace("UserRecipe.html");
+            });
+     
+            //Load comments of a recipe
+            var jsonLoadCom = {
+                "action" : "LOAD-COMMENTS",
+                 "resId" : iDSolo
+            };
+
+            $.ajax({
+                    url: "data/applicationLayer.php",
+                    type: "POST",
+                    data : jsonLoadCom,
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function(jsonResponse){
+                       // $("#UserComments").html("");
+                        var newHTMLContent = "";
+                        var countArr = 0;
+
+                        $.each( jsonResponse, function( i, l ){
+                            countArr ++;
+                        }); 
+
+                        for (var i = 0; i < countArr-1; i++){
+                            newHTMLContent = "";
+                            newHTMLContent += jsonResponse[i].firstName + " " + jsonResponse[i].lastName;
+                            newHTMLContent += "<br>"
+                            newHTMLContent += jsonResponse[i].email;
+                            newHTMLContent += "<br>"
+                            newHTMLContent += jsonResponse[i].com;
+                            $("#UserComments").append(newHTMLContent);
+                            $("#UserComments").append("<hr>"); 
+                        }
+
+                    },
+                    error: function(errorMessage) {
+                        // $("#UserComments").append("No comments on this page");
+                        alert(errorMessage.responseText);
+                    }
+                })
+     
+     //save comment
+     $("#combtnRD").click(function(){
+          var jsonObject = {
+            "action" : "SAVE-COMMENTS",
+            "recId" : iDSolo,
+            "userCom" : $("#ComentarioT").val()
+        };
+
+         var jsonCheckSession = {
+            "action" : "CHECK-SESSION"
+        };
+
+         $.ajax({
+            url: "data/applicationLayer.php",
+            type: "POST",
+            data : jsonCheckSession,
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            success: function(jsonResponse){
+
+            $("#ErrorC").css('display', 'none');
+
+               if($.trim($("#ComentarioT").val()) != ""){
+                        $("#UserComments").append("<div>" + jsonResponse.firstName + " " + jsonResponse.lastName + "<br>"); 
+                        $("#UserComments").append(jsonResponse.email + "<br>")
+                        $("#UserComments").append($("#ComentarioT").val() + "</div>");
+                        $("#UserComments").css('display', 'block');
+                        $("#UserComments").append("<hr>"); 
+
+                        //Save comment
+                        $.ajax({
+                            type: "POST",
+                            url: "data/applicationLayer.php",
+                            data : jsonObject,
+                            dataType : "json",
+                            contentType : "application/x-www-form-urlencoded",
+                            success: function(jsonResponse) {
+                                //alert(jsonResponse.message); 
+                            },
+                            error: function(errorMsg){
+                                alert(errorMsg.responseText);
+                            }
+                        });
+                    }
+                else{
+                    $("#ErrorC").css('display', 'block');
+                } 
+
+                $("#ComentarioT").val("");
+
+            },
+            error: function(errorMessage) {
+                // alert(errorMessage.responseText);
+               $("#myModal").css('display', 'block');
+            }
         })
-        
     });
+
+            
+ });
 </script>
 </body>
 

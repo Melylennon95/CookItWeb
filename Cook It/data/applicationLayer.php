@@ -38,6 +38,9 @@ switch($action){
     
     case "RECIPE-DETAIL" : loadRecipeDetail();
                     break;
+    
+    case "LOADRES-MENU" : loadRecipeMenu();
+                    break;
 }
 function checkStart(){
   
@@ -195,7 +198,9 @@ function startSession($username, $fName, $lName, $email){
 }
 
 function loadCom(){
-    $result = attemptLoadCom();
+    
+    $ResID = $_POST['resId'];
+    $result = attemptLoadCom($ResID);
     
     if ($result["status"] == "SUCCESS"){
 		echo json_encode($result);
@@ -210,10 +215,10 @@ function loadCom(){
 
 function saveCom(){
     
-    $userName = $_POST['uName'];
+    $recId = $_POST['recId'];
     $userCom = $_POST['userCom'];
     
-    $result = attemptSaveCom($userName, $userCom);
+    $result = attemptSaveCom($recId , $userCom);
     
     if ($result["status"] == "SUCCESS"){
 		echo json_encode(array("message" => "New record comment created successfully"));
@@ -260,6 +265,7 @@ function saveRecipe(){
 
 function loadRecipe(){
     
+    
     $result = attemptLoadRecipe();
     
     if ($result["status"] == "SUCCESS"){
@@ -290,6 +296,20 @@ function loadRecipeDetail(){
     
     $ResID = $_POST['resId'];
     $result = attemptRecipeDetail($ResID);
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}
+    
+}
+
+function loadRecipeMenu(){
+    
+    $result = attemptLoadRecipeMenu();
     
     if ($result["status"] == "SUCCESS"){
 		echo json_encode($result);

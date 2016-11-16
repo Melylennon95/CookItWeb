@@ -82,6 +82,42 @@
     </div>
     
     <!--<script src="/CookItWeb/Cook%20It/data/upload-image.js"></script>-->
+<script type="text/javascript">
+ $(document).ready(function () { 
+        
+        $("#loadCancelBtn").css({"background-color": "#ff3333", 
+             "color":"white", 
+             "padding":"5px 11px",
+             "text-align":"center",
+             "display":"inline-block",
+             "font-size":"'Hammersmith One', sans-serif",
+             "border-radius":"7px",
+             "cursor":"pointer"
+        });
+        
+        $("#loadCancelBtn").hover(function(){
+            $(this).css("background-color", "#ff6666");
+            }, function(){
+            $(this).css("background-color", "#ff3333");
+        });   
+     
+        $("#UploadBtn").css({"background-color": "#4CAF50", 
+             "color":"white", 
+             "padding":"5px 11px",
+             "text-align":"center",
+             "display":"inline-block",
+             "font-size":"'Hammersmith One', sans-serif",
+             "border-radius":"7px",
+             "cursor":"pointer"
+        });
+        
+        $("#UploadBtn").hover(function(){
+            $(this).css("background-color", "#80ff80");
+            }, function(){
+            $(this).css("background-color", "#4CAF50");
+        });   
+ });
+</script>
 </body>
 
 </html>

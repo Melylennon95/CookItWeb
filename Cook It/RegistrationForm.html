@@ -78,8 +78,39 @@
     <script type="text/javascript">
         //jquery
         $(document).ready(function(){
-    
-        
+            
+            $("#cancelButton").css({"background-color": "#ff3333", 
+             "color":"white", 
+             "padding":"5px 11px",
+             "text-align":"center",
+             "display":"inline-block",
+             "font-size":"'Hammersmith One', sans-serif",
+             "border-radius":"7px",
+             "cursor":"pointer"
+            });
+
+            $("#cancelButton").hover(function(){
+                $(this).css("background-color", "#ff6666");
+                }, function(){
+                $(this).css("background-color", "#ff3333");
+            });   
+
+            $("#registerButton").css({"background-color": "#4CAF50", 
+                 "color":"white", 
+                 "padding":"5px 11px",
+                 "text-align":"center",
+                 "display":"inline-block",
+                 "font-size":"'Hammersmith One', sans-serif",
+                 "border-radius":"7px",
+                 "cursor":"pointer"
+            });
+
+            $("#registerButton").hover(function(){
+                $(this).css("background-color", "#80ff80");
+                }, function(){
+                $(this).css("background-color", "#4CAF50");
+            });   
+
         });
     </script>
 </html>

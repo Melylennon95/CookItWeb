@@ -133,15 +133,15 @@
       
     }
 
- function attemptLoadCom(){
+ function attemptLoadCom($ResID){
      
          $conn = connectionToDataBase();
         
          if ($conn != null){
              
-            $sql = "SELECT fName, lName, email, users.username, userCom
+            $sql = "SELECT fName, lName, email, userCom
             FROM users , usercomments
-            WHERE usercomments.username = users.username";
+            WHERE usercomments.recId = '$ResID' AND users.username = usercomments.username";
 
             $result = $conn->query($sql);
 
@@ -203,13 +203,17 @@ function attemptLoadOrder(){
     }
 
 
-    function attemptSaveCom($userName, $userCom){
+    function attemptSaveCom($recId , $userCom){
         
          $conn = connectionToDataBase();
         
+        session_start();
+        
+         $userName = $_SESSION['username'];
+        
          if ($conn != null){
              
-			$sql = "INSERT INTO usercomments(username, userCom) VALUES ('$userName', '$userCom')";
+             $sql = "INSERT INTO usercomments(recId , username, userCom) VALUES ('$recId', '$userName' , '$userCom')";
              
                  if (mysqli_query($conn, $sql)) 
                 {
@@ -220,7 +224,7 @@ function attemptLoadOrder(){
                 else 
                 {
                     $conn -> close();
-			         return array("status" => "could not save");
+			         return array("status" => "could not save comment");
                 }
 		}else{
 			$conn -> close();
@@ -417,7 +421,6 @@ function attemptLoadUser(){
     }
 
 function attemptRecipeDetail($ResID){
-        
          $conn = connectionToDataBase();
         
          if ($conn != null){
@@ -437,6 +440,41 @@ function attemptRecipeDetail($ResID){
             {
                 
                 return array("status" => "could not load recipe detail");
+            }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+    }
+
+function attemptLoadRecipeMenu(){
+     
+         $conn = connectionToDataBase();
+    
+         session_start();
+        
+         $userName = $_SESSION['username'];
+        
+         if ($conn != null){
+             
+            $sql = "SELECT * FROM userRecipe ";
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                
+                $response = array("status" => "SUCCESS");
+                
+                while ($row = $result->fetch_assoc()){
+                    array_push($response,array( "RecipeId"=>$row["RecipeId"] ,"name"=>$row["name"], "ingredients"=>$row["ingredients"], "steps"=>$row["steps"], "timeH"=>$row["timeH"], "imageName"=>$row["imageName"]));
+                }
+                
+                
+                return $response;
+            }
+            else
+            {
+                
+                return array("status" => "could not load recipes");
             }
 		}else{
 			$conn -> close();
