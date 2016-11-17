@@ -38,13 +38,13 @@
         </ul>
     </nav>
     
-    <div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
+   <!--<div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
         <div class="container">
             <h1 class="display-3">Your Recipes</h1>
             <p class="lead"></p>
         </div>
     </div>
-    <br>
+    <br>-->
     
 <body>
    
@@ -68,6 +68,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#Contenido").html("");
+         $("#Contenido").append("<h1 class='display-3' id = 'jumTitle' style='color : white'>Your recipes</h1><hr>");
+        
         var jsonLoadRes = {
             "action" : "LOAD-RECIPE"
         };

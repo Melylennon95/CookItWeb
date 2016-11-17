@@ -47,6 +47,9 @@ switch($action){
     
     case "LOAD-FAV" : loadUserFav();
                     break;
+    
+    case "DEL-RES" : deleteRecipe();
+                    break;
 }
 function checkStart(){
   
@@ -346,6 +349,21 @@ function loadRecipeDetail(){
 function loadRecipeMenu(){
     
     $result = attemptLoadRecipeMenu();
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}
+    
+}
+
+function deleteRecipe(){
+    
+    $ResID = $_POST['resId'];
+    $result = attemptDelRecipe($ResID);
     
     if ($result["status"] == "SUCCESS"){
 		echo json_encode($result);

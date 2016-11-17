@@ -38,20 +38,19 @@
         </ul>
     </nav>
     
-    <div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
+    <!--<div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
         <div class="container">
             <h1 class="display-3">Favorite Recipes</h1>
             <p class="lead"></p>
         </div>
     </div>
-    <br>
+    <br>-->
     
 <body>
    
        <div class="container-fluid" id="aboutContainer" style="background-image:url(/CookItWeb/Cook%20It/images/favorites.jpg); background-size: 100%; color:#FFFFFF">
         <div class="row" id = "Contenido">
             <br>
-            
             
             <!--<div class="col-md-9 bd-content">   
                 <h1 class="bd-title" id="content" style="display : none">
@@ -67,7 +66,8 @@
     
 <script type="text/javascript">
     $(document).ready(function () {
-         $("#Contenido").html("");
+        $("#Contenido").html("");
+         $("#Contenido").append("<h1 class='display-3' id = 'jumTitle' style='color : white'>Favorite recipes</h1><hr>");
         var jsonLoadRes = {
             "action" : "LOAD-FAV"
         };
@@ -92,7 +92,10 @@
                         $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + ' ' +'<label>hours </label>' + '<br><span style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +'> More info </span></div><hr>');
                         
                         
-                        $('#Contenido').css({'margin':'auto'});
+                        $('#Contenido').css({
+                            'margin':'auto'
+                        });
+                        
 
                     }
                     

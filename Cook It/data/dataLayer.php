@@ -281,7 +281,9 @@ function attemptLoadfav(){
                 $response = array("status" => "SUCCESS");
                 
                 while ($row = $result->fetch_assoc()){
-                    array_push($response,array( "name"=>$row["name"], "ingredients"=>$row["ingredients"], "steps"=>$row["steps"], "timeH"=>$row["timeH"], "imageName"=>$row["imageName"]));
+                    array_push($response,array(
+                        "RecipeId"=>$row["recipeId"],
+                        "name"=>$row["name"], "ingredients"=>$row["ingredients"], "steps"=>$row["steps"], "timeH"=>$row["timeH"], "imageName"=>$row["imageName"]));
                 }
                 
                 
@@ -388,7 +390,7 @@ function attemptLogout(){
     session_destroy();
     return array("status" => "SUCCESS");
 
-    }
+}
 
 function attemptSaveRecipe($name, $ingredients, $steps, $timeH, $imageName){
         
@@ -549,4 +551,40 @@ function attemptLoadRecipeMenu(){
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
     }
+
+function attemptDelRecipe($ResID){
+        
+        $conn = connectionToDataBase();
+    
+        session_start();
+        
+        $userName = $_SESSION['username'];
+      
+        if ($conn != null)
+        {
+        	$sql = "DELETE FROM `userrecipe` WHERE RecipeId = '$ResID' and userrecipe.username = '$userName'";
+            
+			if (mysqli_query($conn, $sql)) 
+	    	{
+	    		# User registered correctly
+	    		$conn->close();
+			    return array("status" => "SUCCESS");
+			} 
+			else 
+			{
+				# Something went wrong when inserting the user
+				$conn->close();
+				return array("status" => "Cannot delete recipe thats not yours");
+			}
+        }
+        else
+        {
+        	# Connection to Database was not successful
+        	$conn->close();
+        	return array("status" => "ERROR");
+        }
+      
+      
+    }
+
 ?>

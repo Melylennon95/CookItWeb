@@ -118,7 +118,7 @@ $(document).ready(function() {
                 dataType : "json",
                 contentType : "application/x-www-form-urlencoded",
                 success: function(jsonData) {
-                    alert(jsonData.message); 
+                    //alert(jsonData.message); 
                     window.location.replace("Home.html");
 
                 },
@@ -290,8 +290,8 @@ $(document).ready(function() {
                 dataType : "json",
                 contentType : "application/x-www-form-urlencoded",
                 success: function(jsonData) {
-                    alert(jsonData.message); 
-                    window.location.replace("Userprofile.html");
+                   // alert(jsonData.message); 
+                    window.location.replace("UserRecipe.html");
 
                 },
                 error: function(errorMsg){
