@@ -232,7 +232,75 @@ function attemptLoadOrder(){
 		}
     }
 
-    function attemptSaveOrder($burger, $bread, $condiments, $burgerSize, $toppings, $sauces, $fries, $numBurgers ){
+function attemptSaveFav($recId){
+        
+         $conn = connectionToDataBase();
+        
+        session_start();
+        
+         $userName = $_SESSION['username'];
+        
+         if ($conn != null){
+             
+             $sql = "INSERT INTO userfavorite(username, recipeId) VALUES ('$userName' , '$recId')";
+             
+                 if (mysqli_query($conn, $sql)) 
+                {
+                    $conn -> close();
+			         return array("status" => "SUCCESS");
+                     
+                } 
+                else 
+                {
+                    $conn -> close();
+			         return array("status" => "could not save favorite");
+                }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+ }
+
+function attemptLoadfav(){
+     
+         $conn = connectionToDataBase();
+    
+         session_start();
+        
+         $userName = $_SESSION['username'];
+        
+         if ($conn != null){
+             
+            $sql = "SELECT userrecipe.recipeId, name, ingredients, steps, timeH, imageName
+            FROM userfavorite, userrecipe
+            WHERE userfavorite.username = '$userName' AND userfavorite.recipeId = userrecipe.RecipeId";
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                
+                $response = array("status" => "SUCCESS");
+                
+                while ($row = $result->fetch_assoc()){
+                    array_push($response,array( "name"=>$row["name"], "ingredients"=>$row["ingredients"], "steps"=>$row["steps"], "timeH"=>$row["timeH"], "imageName"=>$row["imageName"]));
+                }
+                
+                
+                return $response;
+            }
+            else
+            {
+                
+                return array("status" => "could not load recipes");
+            }
+		}else{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+}
+
+
+
+function attemptSaveOrder($burger, $bread, $condiments, $burgerSize, $toppings, $sauces, $fries, $numBurgers ){
         
         session_start();
         

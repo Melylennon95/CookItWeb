@@ -41,6 +41,12 @@ switch($action){
     
     case "LOADRES-MENU" : loadRecipeMenu();
                     break;
+        
+    case "SAVE-FAV" : saveUserFav();
+                    break;
+    
+    case "LOAD-FAV" : loadUserFav();
+                    break;
 }
 function checkStart(){
   
@@ -213,6 +219,7 @@ function loadCom(){
 }
 
 
+
 function saveCom(){
     
     $recId = $_POST['recId'];
@@ -227,6 +234,35 @@ function saveCom(){
 		header('HTTP/1.1 500' . $result["status"]);
 		die($result["status"]);
 	}	
+}
+
+function saveUserFav(){
+    
+    $recId = $_POST['recId'];
+    
+    $result = attemptSaveFav($recId);
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode(array("message" => "New record comment created successfully"));
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}	
+}
+
+function loadUserFav(){
+    
+    $result = attemptLoadfav();
+    
+    if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}	
+	else{
+		header('HTTP/1.1 500' . $result["status"]);
+		die($result["status"]);
+	}
+    
 }
 
 

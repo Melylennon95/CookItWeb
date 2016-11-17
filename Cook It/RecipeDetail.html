@@ -117,6 +117,8 @@
            
                 
                 <input type="button" id="cancelBtnRD" class = "iden2" value="Back"/>
+                <input type="button" id="favBtnRD" class = "iden2" value="Favorite"/>
+                
             </div>
             
             <div class="col-md-9 bd-content" id="comments"> 
@@ -176,7 +178,23 @@
             $(this).css("background-color", "#80ff80");
             }, function(){
             $(this).css("background-color", "#4CAF50");
-        });   
+        });  
+     
+        $("#favBtnRD").css({"background-color": "#800080", 
+             "color":"white", 
+             "padding":"5px 11px",
+             "text-align":"center",
+             "display":"inline-block",
+             "font-size":"'Hammersmith One', sans-serif",
+             "border-radius":"7px",
+             "cursor":"pointer"
+        });
+        
+        $("#favBtnRD").hover(function(){
+            $(this).css("background-color", "#b300b3");
+            }, function(){
+            $(this).css("background-color", "#800080");
+        });  
      
         $("#ResIngr").css({
              "display":"block",
@@ -216,7 +234,7 @@
             
             //go back to user recipes
             $("#cancelBtnRD").on("click", function(){
-                window.location.replace("UserRecipe.html");
+                window.location.replace("Home.html");
             });
      
             //Load comments of a recipe
@@ -316,7 +334,50 @@
         })
     });
 
-            
+     //Save favorite
+     $("#favBtnRD").click(function(){
+          var jsonObj = {
+            "action" : "SAVE-FAV",
+            "recId" : iDSolo
+        };
+
+         var jsonCheckSession = {
+            "action" : "CHECK-SESSION"
+        };
+
+         $.ajax({
+            url: "data/applicationLayer.php",
+            type: "POST",
+            data : jsonCheckSession,
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            success: function(jsonResponse){
+                        
+                //Save favorite
+                $.ajax({
+                    type: "POST",
+                    url: "data/applicationLayer.php",
+                    data : jsonObj,
+                    dataType : "json",
+                    contentType : "application/x-www-form-urlencoded",
+                    success: function(jsonResponse) {
+                        //alert(jsonResponse.message); 
+                    },
+                    error: function(errorMsg){
+                        alert(errorMsg.responseText);
+                    }
+                });
+                    
+            },
+            error: function(errorMessage) {
+                // alert(errorMessage.responseText);
+               $("#myModal").css('display', 'block');
+            }
+        })
+    });
+
+     
+     
  });
 </script>
 </body>

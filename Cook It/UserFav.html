@@ -66,9 +66,9 @@
     
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#Contenido").html("");
+         $("#Contenido").html("");
         var jsonLoadRes = {
-            "action" : "LOAD-RECIPE"
+            "action" : "LOAD-FAV"
         };
         
         $.ajax({
@@ -88,31 +88,19 @@
                     for (var i = 0; i < countArr-1; i++){
                         newHTMLContent = "";
                         
-                        $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br></div><hr>');
+                        $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br><span style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +'> More info </span></div><hr>');
                         
                         
-                        
-                      $('#display_uploads').css({'margin':'15px'});
-                      $('#listUp').css({'margin':'auto'});
-                        /*$("#display_uploads").css({
-                            "padding-top:":"10px",
-                            "padding-right:":"10px",
-                            "padding-bottom:":"10px",
-                            "padding-left:":"10px"
-                        });
-                       
-                        $("#display_uploads").css({"border-color": "#32321a", 
-                         "border-width":"2px", 
-                         "border-style":"solid"});*/
+                        $('#Contenido').css({'margin':'auto'});
 
                     }
                     
                 },
                 error: function(errorMessage) {
-                    alert(errorMessage.responseText);
+                    //alert(errorMessage.responseText);
+                    $("#Contenido").append("User has not uploaded any recipe");
                 }
         })
-        
     });
 </script>
 </body>
