@@ -14,6 +14,7 @@ $(document).ready(function() {
     });
     $("#aboutTab").on('click', function(){
         $("#homeContainer").hide();
+        $("#rec_word").hide();
         $("#featuredContainer").hide();
         $("#aboutContainer").show();
     });
@@ -224,7 +225,7 @@ $(document).ready(function() {
                     for (var i = 0; i < countArr-1; i++){
                         newHTMLContent = "";
                         
-                        $("#Container").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br><input style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +' align="right" value="Details"></input></div><hr>');
+                        $("#Container").append('<div style="margin-left: 3em; id="listUp" ><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH +' ' +'<label>hours </label>' + '<br><input style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +' align="right" value="Details"></input></div><hr>');
                         
                         
                         $('#Contenido').css({'margin':'auto'});
@@ -234,7 +235,7 @@ $(document).ready(function() {
                 },
                 error: function(errorMessage) {
                     //alert(errorMessage.responseText);
-                    $("#Contenido").append("User has not uploaded any recipe");
+                    $("#Contenido").append("No content uploaded");
                 }
         })
         

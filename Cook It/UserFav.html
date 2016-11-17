@@ -40,25 +40,26 @@
     
     <div class="jumbotron jumbotron-fluid" style="background-image:url(/CookItWeb/Cook%20It/images/berries.jpg); background-size: 100%; color:#FFFFFF">
         <div class="container">
-            <h1 class="display-3">User favorite recipes</h1>
+            <h1 class="display-3">Favorite Recipes</h1>
             <p class="lead"></p>
         </div>
     </div>
+    <br>
     
 <body>
    
-       <div class="container-fluid" id="aboutContainer">
+       <div class="container-fluid" id="aboutContainer" style="background-image:url(/CookItWeb/Cook%20It/images/favorites.jpg); background-size: 100%; color:#FFFFFF">
         <div class="row" id = "Contenido">
             <br>
             
             
-            <div class="col-md-9 bd-content">   
+            <!--<div class="col-md-9 bd-content">   
                 <h1 class="bd-title" id="content" style="display : none">
-                        <a style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a><!--Fill with selected option-->
+                        <a style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Fill with selected option
                 </h1>
                 
                                       
-            </div>
+            </div>-->
             
         </div>
     </div>
@@ -88,7 +89,7 @@
                     for (var i = 0; i < countArr-1; i++){
                         newHTMLContent = "";
                         
-                        $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + '<br><span style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +'> More info </span></div><hr>');
+                        $("#Contenido").append('<div id="listUp"><br>' + jsonResponse[i].name + '<br>' + jsonResponse[i].timeH + ' ' +'<label>hours </label>' + '<br><span style="display:inline-block" type=button class="btn btn-primary" id = '+ jsonResponse[i].RecipeId +'> More info </span></div><hr>');
                         
                         
                         $('#Contenido').css({'margin':'auto'});
@@ -98,7 +99,7 @@
                 },
                 error: function(errorMessage) {
                     //alert(errorMessage.responseText);
-                    $("#Contenido").append("User has not uploaded any recipe");
+                    $("#Contenido").append("User hasn't favorited any recipe");
                 }
         })
     });
@@ -107,14 +108,8 @@
 
     <footer class="footer">
         <div class="container-fluid">
-            <br>
-                        <br>
-                        <br>
-                        <br>
-            <br>
-                        <br>
-                        <br>
-            <span class="text-muted">Need a recipe to survive your trip? Well, you came to the right place.</span>
+            
+            <span class=""><strong>Need a recipe to survive your trip? Well, you came to the right place.</strong></span>
         </div>
     </footer>
 
