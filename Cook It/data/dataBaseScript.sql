@@ -8,10 +8,6 @@ CREATE TABLE users (
     passwrd VARCHAR(200) NOT NULL
     
 );
-
-INSERT INTO Users(fName, lName, email, username, passwrd)
-VALUES  ('Ale', 'Elizondo','AleElisondo@gmail.com', 'AleElizondo', 'AleElizondo'),
-        ('Melissa', 'Figueroa','melylennon@gmail.com', 'MelyGrz95', 'MelyGrz95');
         
 CREATE TABLE usercomments (
     comId INT(200) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -19,10 +15,6 @@ CREATE TABLE usercomments (
     username VARCHAR(50) NOT NULL,
     userCom VARCHAR(200) NOT NULL
 );
-
-INSERT INTO usercomments (username, userCom)
-VALUES ('1' ,'MelyGrz95', 'Best burgers ever!');
-
 
 CREATE TABLE userrecipe (
     RecipeId INT(200) NOT NULL PRIMARY KEY AUTO_INCREMENT,
